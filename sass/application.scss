@@ -1,0 +1,155 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "bootstrap";
+
+.preload * {
+  @include transition(none !important);
+}
+
+header .container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+main {
+  margin-top: 90px;
+}
+
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #158cba;
+  border-color: #158cba;
+
+  a {
+    background: inherit;
+  }
+}
+
+.list-group-item {
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav .list-group-item a {
+  color: inherit;
+  text-decoration: none;
+  // padding: 0;
+}
+
+.master-list-col .delete-link {
+  float: right;
+  position: relative;
+  z-index: 1;
+  cursor: move;
+}
+
+
+.song {
+  position: relative;
+  overflow: hidden;
+
+  .panel-body {
+    position: relative;
+    white-space: pre;
+    font-family: 'Source Code Pro', monospace;
+    line-height: 1.2em;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .keys, .capo {
+    float: left;
+
+    .btn:hover, .btn:active {
+      border-bottom-width: 4px;
+      color: #ffffff;
+      background-color: #158cba;
+      border-color: #127ba3;
+    }
+
+    .btn:first-child:hover, .btn:first-child:active {
+      margin-top: 0;
+    }
+  }
+
+  .capo {
+    margin-right: 20px;
+    display: block;
+    float: left;
+  }
+
+  .sidebar {
+    padding: 5% 3%;
+    white-space: normal;
+    background: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include transform(translateX(100%));
+
+    @include transition-property (transform);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-out);
+
+    &.slide-in {
+      @include transform(translateX(0%));
+    }
+
+    h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: white;
+      margin-bottom: 1em;
+    }
+
+    p.label {
+      margin-bottom: 1.5em;
+      float: left;
+      display: block;
+      @include transform(rotate(-90deg));
+      @include transform-origin(center center);
+      &:first-child {
+        margin-right: 2.1em;
+      }
+    }
+
+    .btn-group-vertical {
+      width: 40px;
+    }
+
+    .tab {
+      border-radius: 2px 0 0 2px;
+      color: white;
+      background: #333;
+      padding: 10px 5px;
+      text-align: center;
+      position: absolute;
+      top: 20px;
+      left: -24px;
+      display: block;
+      text-decoration: none;
+    }
+  }
+}
+
+@include keyframes(slideIn) {
+  from {
+    @include transform(translateX(100%));
+  }
+  to {
+    @include transform(translateX(0%));
+  }
+}
+
+.btn {
+  text-transform: none;
+}
