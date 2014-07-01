@@ -14,7 +14,6 @@ var KeySelector = React.createClass({
         for ( var i in keys ) {
             if ( keys.hasOwnProperty( i ) ) {
                 var key = keys[i];
-                console.log(key,key==this.props.dataKey);
                 buttons.push( React.DOM.button( { type: 'button', onClick: this._onKeyChange, className: 'btn ' + ( this.props.dataKey == key ? 'btn-primary' : 'btn-default' ) }, key ) );
             }
         }

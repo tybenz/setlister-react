@@ -8,6 +8,14 @@ var SetlistActions = {
             id: id,
             key: key
         });
+    },
+
+    updateCapo: function( id, capo ) {
+        AppDispatcher.handleViewAction({
+            actionType: SetlistConstants.SETLIST_UPDATE_CAPO,
+            id: id,
+            capo: capo
+        });
     }
 };
 

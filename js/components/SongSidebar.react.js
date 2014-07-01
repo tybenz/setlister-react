@@ -15,7 +15,7 @@ var SongSidebar = React.createClass({
             React.DOM.p( { className: 'label' }, 'Capo' ),
             React.DOM.p( { className: 'label' }, 'Key' ),
             React.DOM.br(),
-            CapoSelector( { capo: this.props.capo } ),
+            CapoSelector( { songId: this.props.songId, capo: this.props.capo } ),
             KeySelector( { songId: this.props.songId, dataKey: this.props.dataKey } ),
             React.DOM.a({
                 href: '#',

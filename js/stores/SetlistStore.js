@@ -25,12 +25,39 @@ var _setlist = {
 };
 
 function update(id, updates) {
-    _setlist[id] = merge(_setlist[id], updates);
+    return _setlist[id] = merge(_setlist[id], updates);
 }
+
+var _setlist = null;
 
 var SetlistStore = merge(EventEmitter.prototype, {
     getAll: function() {
-        return $.ajax( { url: API_HOST + '/setlist_songs?setlist_id=1', async: false } );
+        if ( !_setlist ) {
+            _setlist = {};
+
+            var songs = $.ajax({
+                url: API_HOST + '/setlist_songs?setlist_id=1',
+                async: false
+            }).responseJSON;
+
+            for ( var i = 0, len = songs.length; i < len; i++ ) {
+                var song = songs[ i ];
+                song.capo = song.capo ? song.capo : 0;
+                var newSong = merge(
+                    {
+                        key: song.key,
+                        capo: song.capo,
+                        id: song.id
+                    },
+                    merge( song.song, { capo: song.capo, key: song.key ? song.key : song.song.key } )
+                );
+                newSong.originalKey = song.song.key;
+
+                _setlist[ newSong.id ] = newSong;
+            }
+        }
+
+        return _setlist;
     },
 
     emitChange: function() {
@@ -49,11 +76,33 @@ var SetlistStore = merge(EventEmitter.prototype, {
 AppDispatcher.register( function( payload ) {
     var action = payload.action;
 
-    switch( action.actionType ) {
+    switch ( action.actionType ) {
         case SetlistConstants.SETLIST_UPDATE_KEY:
-            update( action.id, { key: action.key } );
+            var song = update( action.id, { key: action.key } );
+            break;
+        case SetlistConstants.SETLIST_UPDATE_CAPO:
+            var song = update( action.id, { capo: action.capo } );
             break;
         default: return true;
+    }
+
+    if ( song.id ) {
+        // update
+        $.ajax({
+            url: API_HOST + '/setlist_songs/' + song.id,
+            type: 'PUT',
+            dataType: 'json',
+            data: {
+                capo: song.capo,
+                key: song.key,
+                index: song.index
+            },
+            success: function( data ) {
+                console.log(data);
+            }
+        })
+    } else {
+        // create
     }
 
     SetlistStore.emitChange();

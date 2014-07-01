@@ -6023,12 +6023,8 @@ label {
   -moz-transition: none !important;
   transition: none !important; }
 
-header .container {
-  padding-left: 30px;
-  padding-right: 30px; }
-
 main {
-  margin-top: 90px; }
+  margin-top: 60px; }
 
 .list-group-item.active,
 .list-group-item.active:hover,
@@ -6059,6 +6055,9 @@ main {
 .song {
   position: relative;
   overflow: hidden; }
+  .song .panel-heading .capo-label {
+    float: right;
+    line-height: 2em; }
   .song .panel-body {
     position: relative;
     white-space: pre;
@@ -6171,3 +6170,38 @@ main {
     transform: translateX(0%); } }
 .btn {
   text-transform: none; }
+
+.song-thumb {
+  font-size: 0.9em;
+  overflow: hidden; }
+  .song-thumb .panel-title {
+    font-size: 1.4em; }
+  .song-thumb .panel-body {
+    overflow: hidden;
+    padding: 0.9em; }
+  .song-thumb .song-preview {
+    font-size: 0.6em;
+    overflow: hidden;
+    white-space: pre;
+    max-height: 20rem; }
+
+.song-list .actions .glyphicon {
+  text-decoration: none;
+  color: inherit;
+  margin-right: 1em; }
+.song-list .song-list-item {
+  cursor: pointer; }
+
+.setlist-popover {
+  min-width: 200px;
+  padding: 0; }
+  .setlist-popover .popover-content {
+    padding: 0; }
+  .setlist-popover .list-group-item {
+    padding: 0.5em;
+    border-right: none;
+    border-left: none; }
+    .setlist-popover .list-group-item:first-child {
+      border-top: none; }
+    .setlist-popover .list-group-item:last-child {
+      border-bottom: none; }

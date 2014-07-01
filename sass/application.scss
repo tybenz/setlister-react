@@ -6,13 +6,9 @@
   @include transition(none !important);
 }
 
-header .container {
-  padding-left: 30px;
-  padding-right: 30px;
-}
 
 main {
-  margin-top: 90px;
+  margin-top: 60px;
 }
 
 .list-group-item.active,
@@ -50,6 +46,11 @@ main {
 .song {
   position: relative;
   overflow: hidden;
+
+  .panel-heading .capo-label {
+    float: right;
+    line-height: 2em;
+  }
 
   .panel-body {
     position: relative;
@@ -152,4 +153,60 @@ main {
 
 .btn {
   text-transform: none;
+}
+
+.song-thumb {
+  font-size: 0.9em;
+  overflow: hidden;
+
+  .panel-title {
+    font-size: 1.4em;
+  }
+
+  .panel-body {
+    overflow: hidden;
+    padding: 0.9em;
+  }
+
+  .song-preview {
+    font-size: 0.6em;
+    overflow: hidden;
+    white-space: pre;
+    max-height: 20rem;
+  }
+}
+
+.song-list {
+  .actions .glyphicon {
+    text-decoration: none;
+    color: inherit;
+    margin-right: 1em;
+  }
+
+  .song-list-item {
+    cursor: pointer;
+  }
+}
+
+.setlist-popover {
+  min-width: 200px;
+  padding: 0;
+
+  .popover-content {
+    padding: 0;
+  }
+
+  .list-group-item {
+    padding: 0.5em;
+    border-right: none;
+    border-left: none;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 }
