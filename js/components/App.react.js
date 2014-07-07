@@ -2,11 +2,12 @@ var React = require( 'react' );
 var Nav = require( './Nav.react' );
 var Sidebar = require( './Sidebar.react' );
 var Song = require( './Song.react' );
-var SetlistStore = require( '../stores/SetlistStore' );
+var SetlistSongStore = require( '../stores/SetlistSongStore' );
+var SongList = require( './SongList.react' );
 
 function getSetlistState() {
     return {
-        songs: SetlistStore.getAll()
+        songs: SetlistSongStore.getAll()
     };
 }
 
@@ -18,7 +19,7 @@ var App = React.createClass({
     componentDidMount: function() {
         document.body.classList.remove( 'preload' );
 
-        SetlistStore.addChangeListener( this._onChange );
+        SetlistSongStore.addChangeListener( this._onChange );
     },
 
     _onChange: function() {

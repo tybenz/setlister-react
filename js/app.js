@@ -20,8 +20,9 @@ var React = require('react');
 global.React = React;
 
 var App = require( './components/App.react' );
+var SongListApp = require( './components/SongListApp.react' );
 
 React.renderComponent(
-  App(),
+  SongListApp(),
   document.body
 );

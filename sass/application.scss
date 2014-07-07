@@ -8,7 +8,7 @@
 
 
 main {
-  margin-top: 60px;
+  margin-top: 90px;
 }
 
 .list-group-item.active,
@@ -177,6 +177,14 @@ main {
 }
 
 .song-list {
+  .name-header {
+    width: 80%
+  }
+
+  tr.info th {
+    font-weight: normal;
+  }
+
   .actions .glyphicon {
     text-decoration: none;
     color: inherit;
@@ -191,6 +199,11 @@ main {
 .setlist-popover {
   min-width: 200px;
   padding: 0;
+  position: absolute;
+
+  &.show {
+    display: block;
+  }
 
   .popover-content {
     padding: 0;

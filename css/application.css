@@ -6024,7 +6024,7 @@ label {
   transition: none !important; }
 
 main {
-  margin-top: 60px; }
+  margin-top: 90px; }
 
 .list-group-item.active,
 .list-group-item.active:hover,
@@ -6185,6 +6185,10 @@ main {
     white-space: pre;
     max-height: 20rem; }
 
+.song-list .name-header {
+  width: 80%; }
+.song-list tr.info th {
+  font-weight: normal; }
 .song-list .actions .glyphicon {
   text-decoration: none;
   color: inherit;
@@ -6194,7 +6198,10 @@ main {
 
 .setlist-popover {
   min-width: 200px;
-  padding: 0; }
+  padding: 0;
+  position: absolute; }
+  .setlist-popover.show {
+    display: block; }
   .setlist-popover .popover-content {
     padding: 0; }
   .setlist-popover .list-group-item {
