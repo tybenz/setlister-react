@@ -27,7 +27,7 @@ var SongListApp = React.createClass({
 
             switch ( action.actionType ) {
                 case SongConstants.OPEN_SETLIST_POPOVER:
-                    app.openPopover( action.id );
+                    app.togglePopover( action.id );
                     break;
                 default: return true;
             }
@@ -51,11 +51,15 @@ var SongListApp = React.createClass({
         this.setState( getSongsState );
     },
 
-    openPopover: function( id ) {
-        this.setState({
-            popoverOpen: true,
-            popoverRelatedId: id
-        });
+    togglePopover: function( id ) {
+        if ( this.state.popoverOpen && this.state.popoverRelatedId == id ) {
+            this.closePopover();
+        } else {
+            this.setState({
+                popoverOpen: true,
+                popoverRelatedId: id
+            });
+        }
     },
 
     closePopover: function() {

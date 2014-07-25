@@ -1,4 +1,5 @@
 .DS_Store
 .sass-cache
+npm-debug.log
 nohup.out
 node_modules
